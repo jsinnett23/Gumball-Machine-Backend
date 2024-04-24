@@ -39,5 +39,10 @@ public class SoldState implements IState {
     public String getTheName() {
         return GumballMachineState.GUMBALL_SOLD.name();
     }
+
+    @Override
+    public void refill(int count) {
+        gumballMachine.setCount(gumballMachine.getCount() + count);
+    }
 }
 

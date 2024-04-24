@@ -16,6 +16,10 @@ public class GumballMachine2 implements IGumballMachine{
     public Integer getCount() {
         return count;
     }
+    @Override
+    public void setCount(Integer integer) {
+        this.count = integer;
+    }
 
     public void setCount(int count) {
         this.count = count;
@@ -81,4 +85,14 @@ public class GumballMachine2 implements IGumballMachine{
             }
         }
     }
+
+    @Override
+    public void refill(int count) {
+        this.count += count; // Increment gumball count
+        // Check if the current state is "OUT_OF_GUMBALLS" and there are new gumballs added
+        if (state.getTheName().equals(GumballMachineState.OUT_OF_GUMBALLS.name()) && count > 0) {
+            this.setState(noQuarterState); // Change the state to "NO_QUARTER" if gumballs are added
+        }
+    }
+
 }

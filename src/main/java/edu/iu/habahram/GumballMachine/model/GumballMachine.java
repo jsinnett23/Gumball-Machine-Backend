@@ -93,6 +93,11 @@ public class GumballMachine implements IGumballMachine {
     }
 
     @Override
+    public void setCount(Integer integer) {
+        this.count = integer;
+    }
+
+    @Override
     public String getTheStateName() {
         return state;
     }
@@ -101,6 +106,14 @@ public class GumballMachine implements IGumballMachine {
     public void releaseBall() {
         if (count > 0) {
             count--;
+        }
+    }
+
+    @Override
+    public void refill(int count) {
+        this.count += count; // Increment gumball count
+        if (this.state.equals(SOLD_OUT) && count > 0) {
+            this.state = NO_QUARTER;
         }
     }
 

@@ -6,5 +6,6 @@ public interface IState {
     TransitionResult turnCrank();
     TransitionResult dispense();
     String getTheName();
+    void refill(int count);
 }
 
